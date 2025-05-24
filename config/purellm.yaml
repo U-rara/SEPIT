@@ -1,0 +1,31 @@
+hydra:
+  run:
+    dir: './outputs/${task_name}/${now:%Y-%m-%d_%H-%M-%S}'
+
+task_name: 'PureLLM'
+
+# path
+data_path: './database'
+output_path: './outputs/${task_name}/${now:%Y-%m-%d_%H-%M-%S}'
+
+# model
+text_model_name: 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
+
+# dataset
+dataset: 'stage2'
+max_length: 1024
+
+# train
+lr: 1e-4
+fp16: True
+batch_size: 1
+num_epochs: 4
+weight_decay: 0.0
+warmup_ratio: 0.03
+
+protein_token: '<protein>'
+
+# task
+task: 'PureLLMPretrainTask'
+
+deepspeed: './zero3_offload.json'

@@ -1,0 +1,15 @@
+hydra:
+  run:
+    dir: './outputs/evaluation/${task_name}/'
+
+task_name: 'Evaluate'
+
+# path
+data_path: './database/stage2/qa_test.jsonl'
+output_path: './outputs/evaluation/${task_name}/'
+
+# model
+bert_model_name: 'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract'
+
+# task
+task: 'QAEvaluateTask'

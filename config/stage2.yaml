@@ -1,0 +1,39 @@
+hydra:
+  run:
+    dir: './outputs/${task_name}/${now:%Y-%m-%d_%H-%M-%S}'
+
+task_name: 'PIT_Pretrain_Stage2'
+
+# path
+data_path: './database'
+output_path: './outputs/${task_name}/${now:%Y-%m-%d_%H-%M-%S}'
+
+# model
+pit_model_name: null # Stage1 model
+protein_model_name: null # Stage1 model
+protein_model_fixed: True
+text_model_name: 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
+text_model_fixed: False
+text_model_moe: True
+
+# dataset
+dataset: 'stage2'
+max_length: 1024
+drop_structure_rate: 0.15
+sequence_only: False
+
+# train
+lr: 1e-4
+lr_ratio: 0.1
+fp16: True
+batch_size: 1
+num_epochs: 4
+weight_decay: 0.0
+warmup_ratio: 0.03
+
+protein_token: '<protein>'
+
+# task
+task: 'PITStage2PretrainTask'
+
+deepspeed: './zero3_offload.json'

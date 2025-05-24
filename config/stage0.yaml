@@ -1,0 +1,34 @@
+hydra:
+  run:
+    dir: './outputs/${task_name}/${now:%Y-%m-%d_%H-%M-%S}'
+
+task_name: 'Stage0'
+
+# path
+data_path: './database'
+output_path: './outputs/${task_name}/${now:%Y-%m-%d_%H-%M-%S}'
+
+# model
+protein_model_name: 'facebook/esm2_t33_650M_UR50D'
+protein_model_fixed: False
+text_model_name: 'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract'
+text_model_fixed: True
+projection_dim: 512
+
+# dataset
+dataset: 'stage0'
+mlm_probability: 0.15
+sequence_only: False
+
+# train
+lr: 1e-6
+lr_ratio: 10
+fp16: True
+batch_size: 4
+num_epochs: 10
+weight_decay: 0.0
+warmup_ratio: 0.03
+deepspeed: 'zero3.json'
+
+# task
+task: 'ProteinTextCLIPPretrainTask'

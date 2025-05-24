@@ -1,0 +1,26 @@
+hydra:
+  run:
+    dir: './outputs/inference/${task_name}/'
+
+task_name: 'Inference'
+
+# path
+data_path: './database'
+output_path: './outputs/inference/${task_name}/'
+
+# model
+model_name: './ckpts/SEPIT'
+
+# dataset
+dataset: 'stage2'
+subset: 'qa_test'
+max_length: 1024
+sequence_only: False
+
+# device
+rank: -1
+world_size: 1
+batch_size: 2
+
+# task
+task: 'PITStage2InferenceTask'
