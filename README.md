@@ -1,4 +1,4 @@
-<h2 align="center">SEPIT: Structure-Enhanced Protein Instruction Tuning: Towards General-Purpose Protein
+<h2 align="center">Structure-Enhanced Protein Instruction Tuning(SEPIT): Towards General-Purpose Protein
 Understanding</h2>
 <p align="center">
   <a href="https://arxiv.org/pdf/2410.03553">📄 <b>Paper</b></a> |
